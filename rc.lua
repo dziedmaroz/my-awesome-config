@@ -12,7 +12,7 @@ require("debian.menu")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/lucian/.config/awesome/themes/default/theme.lua")
+beautiful.init("/home/lucian/.config/awesome/themes/oblivion/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "sakura"
@@ -211,12 +211,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function ()
-    awful.util.spawn("dmenu_run -b -i -p 'Run command:' -nb '" .. 
- 		beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
-		"' -sb '" .. beautiful.bg_focus .. 
-		"' -sf '" .. beautiful.fg_focus .. "'") 
-	end),
+    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    
 
     awful.key({ modkey }, "x",
               function ()
