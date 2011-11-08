@@ -220,7 +220,18 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+    -- Clementine 
+    awful.key({ modkey, "Control"},"Left", function () awful.util.spawn_with_shell ("clementine -f") end),
+    awful.key({ modkey, "Control"},"Right", function () awful.util.spawn_with_shell ("clementine -r") end),
+    awful.key({ modkey, "Control"},"Up", function () awful.util.spawn_with_shell ("clementine --volume-up") end),
+    awful.key({ modkey, "Control"},"Down", function () awful.util.spawn_with_shell ("clementine --volume-down") end),
+    awful.key({ modkey, "Shift"  },"Left", function () awful.util.spawn_with_shell ("clementine --seek-by -5") end),
+    awful.key({ modkey, "Shift"  },"Right", function () awful.util.spawn_with_shell ("clementine --seek-by 5") end),
+    awful.key({ modkey, "Control"  },"o", function () awful.util.spawn_with_shell ("clementine -o") end),
+    awful.key({ modkey, "Control"  },"p", function () awful.util.spawn_with_shell ("clementine -t") end)
+
+		
 )
 
 clientkeys = awful.util.table.join(
@@ -313,6 +324,14 @@ awful.rules.rules = {
        properties = { tag = tags[1][1] } },
     { rule = { class = "Sakura" },
        properties = { tag = tags[1][5] } },
+    { rule = { class = "java-lang-Thread"},
+	properties = { tag = tags [1][4]} },
+    { rule = { class = "Gitg"},
+	properties = {tag = tags [1][4]} },
+    { rule = { class = "Qtcreator"},
+	properties = { tag = tags [1][4]} },
+	
+	
 
     
 }
@@ -347,5 +366,12 @@ end)
 
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- setting keyboard layout
 awful.util.spawn_with_shell ("~/.scripts/setkbmap")
+-- start some apps
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance clementine")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance chromium-browser")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance pidgin")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance nm-applet")
+
 -- }}}
