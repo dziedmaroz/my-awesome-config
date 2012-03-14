@@ -1,0 +1,4 @@
+#!/bin/bash
+echo $(ps -e | grep chrome);
+res="$(ps -e| grep chrome)";
+if [ -z "$res" ]; then google-chrome; fi

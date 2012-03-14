@@ -220,16 +220,16 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end),
+              end)
     -- Clementine 
-    awful.key({ modkey, "Control"},"Left", function () awful.util.spawn_with_shell ("clementine -r") end),
-    awful.key({ modkey, "Control"},"Right", function () awful.util.spawn_with_shell ("clementine -f") end),
-    awful.key({ modkey, "Control"},"Up", function () awful.util.spawn_with_shell ("clementine --volume-up && sleep 1") end),
-    awful.key({ modkey, "Control"},"Down", function () awful.util.spawn_with_shell ("clementine --volume-down && sleep 1") end),
-    awful.key({ modkey, "Shift"  },"Left", function () awful.util.spawn_with_shell ("clementine --seek-by -5 && sleep 1") end),
-    awful.key({ modkey, "Shift"  },"Right", function () awful.util.spawn_with_shell ("clementine --seek-by 5 && sleep 1") end),
-    awful.key({ modkey, "Control"  },"o", function () awful.util.spawn_with_shell ("clementine -o") end),
-    awful.key({ modkey, "Control"  },"p", function () awful.util.spawn_with_shell ("clementine -t") end)
+--    awful.key({ modkey, "Control"},"Left", function () awful.util.spawn_with_shell ("clementine -r") end),
+--    awful.key({ modkey, "Control"},"Right", function () awful.util.spawn_with_shell ("clementine -f") end),
+--    awful.key({ modkey, "Control"},"Up", function () awful.util.spawn_with_shell ("clementine --volume-up && sleep 1") end),
+--    awful.key({ modkey, "Control"},"Down", function () awful.util.spawn_with_shell ("clementine --volume-down && sleep 1") end),
+--    awful.key({ modkey, "Shift"  },"Left", function () awful.util.spawn_with_shell ("clementine --seek-by -5 && sleep 1") end),
+--    awful.key({ modkey, "Shift"  },"Right", function () awful.util.spawn_with_shell ("clementine --seek-by 5 && sleep 1") end),
+--    awful.key({ modkey, "Control"  },"o", function () awful.util.spawn_with_shell ("clementine -o") end),
+--    awful.key({ modkey, "Control"  },"p", function () awful.util.spawn_with_shell ("clementine -t") end)
 
 		
 )
@@ -316,7 +316,7 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
-    { rule = { class = "Clementine" },
+    { rule = { class = "Gmpc" },
        properties = { tag = tags[1][3] } },
     { rule = { class = "Pidgin" },
        properties = { tag = tags[1][2] } },
@@ -369,7 +369,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- setting keyboard layout
 awful.util.spawn_with_shell ("~/.scripts/setkbmap")
 -- start some apps
---awful.util.spawn_with_shell ("~/.config/awesome/oneinstance clementine")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance gmpc")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance pidgin")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance nm-applet")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance.chrome")
