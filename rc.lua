@@ -318,6 +318,9 @@ awful.rules.rules = {
     --   properties = { tag = tags[1][2] } },
     { rule = { class = "Clementine" },
        properties = { tag = tags[1][3] } },
+    { rule = { class = "Eclipse" },
+       properties = { tag = tags[1][4] } },
+
     { rule = { class = "Pidgin" },
        properties = { tag = tags[1][2] } },
     { rule = { class = "Google-chrome" },
@@ -330,6 +333,8 @@ awful.rules.rules = {
 	properties = {tag = tags [1][4]} },
     { rule = { class = "Qtcreator"},
 	properties = { tag = tags [1][4]} },
+	{ rule = { class = "Skype"},
+	properties = { tag = tags [1][2]} },
 	
 	
 
@@ -370,6 +375,7 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 awful.util.spawn_with_shell ("~/.scripts/setkbmap")
 -- start some apps
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance clementine")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance skype")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance pidgin")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance nm-applet")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance.chrome")
