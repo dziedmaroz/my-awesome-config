@@ -7,6 +7,8 @@ require("beautiful")
 -- Notification library
 require("naughty")
 
+require("vicious")
+
 -- Load Debian menu entries
 require("debian.menu")
 
@@ -155,6 +157,27 @@ for s = 1, screen.count() do
     }
 end
 -- }}}
+
+
+-- {{{ Battery state
+
+-- Initialize widget
+batwidget = widget({ type = "textbox" })
+baticon = widget({ type = "imagebox" })
+
+-- Register widget
+vicious.register(batwidget, vicious.widgets.bat,
+	function (widget, args)
+		if args[2] == 0 then return ""
+		else
+			baticon.image = image(beautiful.widget_bat)
+			return "<span color='white'>".. args[2] .. "%</span>"
+		end
+	end, 61, "BAT0"
+)
+-- }}}
+
+
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
@@ -332,6 +355,8 @@ awful.rules.rules = {
 	properties = { tag = tags [1][4]} },
     { rule = { class = "Eclipse"},
         properties = { tag = tags [1][4]} },
+    { rule = { class = "Skype"},
+        properties = { tag = tags [1][2]} },
 
 	
 
@@ -375,7 +400,9 @@ awful.util.spawn_with_shell ("~/.config/awesome/oneinstance clementine")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance pidgin")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance nm-applet")
 awful.util.spawn_with_shell ("~/.config/awesome/oneinstance.chrome")
-awful.util.spawn_with_shell ("xfce4-power-manager")
-awful.util.spawn_with_shell ("gnome-settings-daemon")
-awful.util.spawn_with_shell ("gnome-sound-applet")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance skype")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance gnome-settings-daemon")
+awful.util.spawn_with_shell ("~/.config/awesome/oneinstance gnome-sound-applet")
+awful.util.spawn_with_shell ("sleep 10 & xfce4-power-manager --no-daemon")
+awful.util.spawn_with_shell ("wmname LG3D")
 -- }}}
